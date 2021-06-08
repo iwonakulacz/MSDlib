@@ -1,7 +1,7 @@
 {
-  "name": "mediastoresdk",
+  "name": "mediastoresdk-test",
   "version": "1.0.0",
-  "private": true,
+  "author": "ikulacz",
   "engines": {
     "node": ">=14.15.0 <15.0"
   },
@@ -56,11 +56,9 @@
     "postcss-safe-parser": "4.0.1",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
     "react-app-polyfill": "^1.0.6",
     "react-custom-scrollbars": "^4.2.1",
     "react-dev-utils": "^11.0.4",
-    "react-dom": "^16.14.0",
     "react-i18next": "^10.12.5",
     "react-loading-skeleton": "^2.2.0",
     "react-redux": "^7.2.4",
@@ -92,7 +90,8 @@
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "scan-translations": "node -e 'require(`./scripts/translationsBundle.js`).run(false)'"
+    "scan-translations": "node -e 'require(`./scripts/translationsBundle.js`).run(false)'",
+    "build:package": "rm -rf dist && NODE_ENV=production babel src/containers/App --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
   },
   "browserslist": {
     "production": [
@@ -132,6 +131,9 @@
     ]
   },
   "devDependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "@babel/cli": "^7.14.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^6.8.0",
@@ -155,5 +157,15 @@
     "stylelint-processor-styled-components": "^1.10.0",
     "stylelint-scss": "^3.19.0",
     "yargs": "^14.2.3"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iwonakulacz/MSDlib"
   }
 }
