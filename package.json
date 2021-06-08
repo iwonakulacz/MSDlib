@@ -1,6 +1,6 @@
 {
   "name": "mediastoresdk-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "ikulacz",
   "engines": {
     "node": ">=14.15.0 <15.0"
