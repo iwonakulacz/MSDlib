@@ -1,4 +1,4 @@
-import _objectSpread from '/Users/iwonakulacz/Documents/repos/msd-package/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectSpread2';
+import _objectSpread from "/Users/iwonakulacz/Documents/repos/msd-package/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectSpread2";
 
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
@@ -7,14 +7,13 @@ import MyAccountInput from 'components/MyAccountInput';
 import updateCustomerRequest from 'api/Customer/updateCustomer';
 import updateCaptureAnswers from 'api/Customer/updateCaptureAnswers';
 import { PureProfileDetails } from './ProfileDetails';
-
 jest.mock('api/Customer/updateCustomer');
 jest.mock('api/Customer/updateCaptureAnswers');
-describe('<ProfileDetails/>', function() {
-  afterEach(function() {
+describe('<ProfileDetails/>', function () {
+  afterEach(function () {
     jest.clearAllMocks();
   });
-  const defaultProps = {
+  var defaultProps = {
     firstName: 'Username',
     lastName: 'Lastname',
     email: 'user@example.com',
@@ -37,7 +36,7 @@ describe('<ProfileDetails/>', function() {
       answer: 'test company'
     }
   };
-  const updatedProps = {
+  var updatedProps = {
     firstName: 'Username2',
     lastName: 'Lastname2',
     email: 'user2@example.com',
@@ -61,64 +60,44 @@ describe('<ProfileDetails/>', function() {
       answer: 'test company'
     }
   };
-  describe('@lifecycle', function() {
-    it('should set state on componentDidMount', function() {
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(PureProfileDetails, {
-          ...defaultProps,
-          isLoading: false
-        })
-      );
+  describe('@lifecycle', function () {
+    it('should set state on componentDidMount', function () {
+      var wrapper = mount( /*#__PURE__*/React.createElement(PureProfileDetails, Object.assign({}, defaultProps, {
+        isLoading: false
+      })));
       expect(wrapper.state().updated.firstName).toEqual(defaultProps.firstName);
       expect(wrapper.state().updated.lastName).toEqual(defaultProps.lastName);
       expect(wrapper.state().updated.email).toEqual(defaultProps.email);
-      expect(wrapper.state().updated.birthDate).toEqual(
-        updatedProps.birthDate.answer
-      );
-      expect(wrapper.state().updated.phoneNumber).toEqual(
-        updatedProps.phoneNumber.answer
-      );
-      expect(wrapper.state().updated.companyName).toEqual(
-        updatedProps.companyName.answer
-      );
+      expect(wrapper.state().updated.birthDate).toEqual(updatedProps.birthDate.answer);
+      expect(wrapper.state().updated.phoneNumber).toEqual(updatedProps.phoneNumber.answer);
+      expect(wrapper.state().updated.companyName).toEqual(updatedProps.companyName.answer);
     });
-    it('should update state on componentDidUpdate', function() {
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(PureProfileDetails, defaultProps)
-      );
+    it('should update state on componentDidUpdate', function () {
+      var wrapper = mount( /*#__PURE__*/React.createElement(PureProfileDetails, defaultProps));
       wrapper.setProps(updatedProps);
       expect(wrapper.state().updated.firstName).toEqual(updatedProps.firstName);
       expect(wrapper.state().updated.lastName).toEqual(updatedProps.lastName);
       expect(wrapper.state().updated.email).toEqual(updatedProps.email);
-      expect(wrapper.state().updated.birthDate).toEqual(
-        updatedProps.birthDate.answer
-      );
-      expect(wrapper.state().updated.phoneNumber).toEqual(
-        updatedProps.phoneNumber.answer
-      );
-      expect(wrapper.state().updated.companyName).toEqual(
-        updatedProps.companyName.answer
-      );
+      expect(wrapper.state().updated.birthDate).toEqual(updatedProps.birthDate.answer);
+      expect(wrapper.state().updated.phoneNumber).toEqual(updatedProps.phoneNumber.answer);
+      expect(wrapper.state().updated.companyName).toEqual(updatedProps.companyName.answer);
     });
   });
-  describe('@action', function() {
-    it('should update state on input change', function() {
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(PureProfileDetails, {
-          ...defaultProps,
-          isLoading: false
-        })
-      );
+  describe('@action', function () {
+    it('should update state on input change', function () {
+      var wrapper = mount( /*#__PURE__*/React.createElement(PureProfileDetails, Object.assign({}, defaultProps, {
+        isLoading: false
+      })));
       wrapper.setState({
         isSectionDisabled: false
       });
-      const nameInput = wrapper.find(MyAccountInput).at(0);
-      const lastNameInput = wrapper.find(MyAccountInput).at(1);
-      const emailInput = wrapper.find(MyAccountInput).at(2);
-      const passwordInput = wrapper.find(MyAccountInput).at(3);
-      const birthDateInput = wrapper.find(MyAccountInput).at(4);
-      const phoneNumberInput = wrapper.find(MyAccountInput).at(5);
-      const companyNumberInput = wrapper.find(MyAccountInput).at(6);
+      var nameInput = wrapper.find(MyAccountInput).at(0);
+      var lastNameInput = wrapper.find(MyAccountInput).at(1);
+      var emailInput = wrapper.find(MyAccountInput).at(2);
+      var passwordInput = wrapper.find(MyAccountInput).at(3);
+      var birthDateInput = wrapper.find(MyAccountInput).at(4);
+      var phoneNumberInput = wrapper.find(MyAccountInput).at(5);
+      var companyNumberInput = wrapper.find(MyAccountInput).at(6);
       nameInput.props().onChange({
         target: {
           value: updatedProps.firstName
@@ -157,63 +136,44 @@ describe('<ProfileDetails/>', function() {
       expect(wrapper.state().updated.firstName).toEqual(updatedProps.firstName);
       expect(wrapper.state().updated.lastName).toEqual(updatedProps.lastName);
       expect(wrapper.state().updated.email).toEqual(updatedProps.email);
-      expect(wrapper.state().updated.birthDate).toEqual(
-        updatedProps.birthDate.answer
-      );
-      expect(wrapper.state().updated.phoneNumber).toEqual(
-        updatedProps.phoneNumber.answer
-      );
-      expect(wrapper.state().updated.companyName).toEqual(
-        updatedProps.companyName.answer
-      );
+      expect(wrapper.state().updated.birthDate).toEqual(updatedProps.birthDate.answer);
+      expect(wrapper.state().updated.phoneNumber).toEqual(updatedProps.phoneNumber.answer);
+      expect(wrapper.state().updated.companyName).toEqual(updatedProps.companyName.answer);
     });
-    it('should clear state on Cancel button click', function() {
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(PureProfileDetails, {
-          ...defaultProps,
-          isLoading: false
-        })
-      );
+    it('should clear state on Cancel button click', function () {
+      var wrapper = mount( /*#__PURE__*/React.createElement(PureProfileDetails, Object.assign({}, defaultProps, {
+        isLoading: false
+      })));
       wrapper.setState({
         isSectionDisabled: false
       });
-      const cancelButton = wrapper.find('button').at(0);
+      var cancelButton = wrapper.find('button').at(0);
       cancelButton.simulate('click');
       expect(wrapper.state().isSectionDisabled).toBe(true);
       expect(wrapper.state().updated.confirmationPassword).toEqual('');
       expect(wrapper.state().updated.firstName).toEqual(defaultProps.firstName);
       expect(wrapper.state().updated.lastName).toEqual(defaultProps.lastName);
       expect(wrapper.state().updated.email).toEqual(defaultProps.email);
-      expect(wrapper.state().updated.birthDate).toEqual(
-        updatedProps.birthDate.answer
-      );
-      expect(wrapper.state().updated.phoneNumber).toEqual(
-        updatedProps.phoneNumber.answer
-      );
-      expect(wrapper.state().updated.companyName).toEqual(
-        updatedProps.companyName.answer
-      );
+      expect(wrapper.state().updated.birthDate).toEqual(updatedProps.birthDate.answer);
+      expect(wrapper.state().updated.phoneNumber).toEqual(updatedProps.phoneNumber.answer);
+      expect(wrapper.state().updated.companyName).toEqual(updatedProps.companyName.answer);
       expect(wrapper.state().errors.confirmationPassword).toBe('');
       expect(wrapper.state().errors.email).toBe('');
     });
-    it('should change status on click Edit Profile button', function() {
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(PureProfileDetails, defaultProps)
-      );
-      const button = wrapper.find('button').at(0);
+    it('should change status on click Edit Profile button', function () {
+      var wrapper = mount( /*#__PURE__*/React.createElement(PureProfileDetails, defaultProps));
+      var button = wrapper.find('button').at(0);
       button.simulate('click');
       expect(wrapper.state().isSectionDisabled).toBe(false);
     });
   });
-  describe('@submit', function() {
-    it('should validate fields and set errors in state', function() {
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(PureProfileDetails, defaultProps)
-      );
+  describe('@submit', function () {
+    it('should validate fields and set errors in state', function () {
+      var wrapper = mount( /*#__PURE__*/React.createElement(PureProfileDetails, defaultProps));
       wrapper.setState({
         isSectionDisabled: false
       });
-      const emailInput = wrapper.find(MyAccountInput).at(2);
+      var emailInput = wrapper.find(MyAccountInput).at(2);
       emailInput.props().onChange({
         target: {
           value: 'newUser@example.com'
@@ -221,13 +181,11 @@ describe('<ProfileDetails/>', function() {
       });
       wrapper.instance().areEmailAndPasswordValid();
       expect(wrapper.state().errors.email).toBe('');
-      expect(wrapper.state().errors.confirmationPassword).toBe(
-        'Please confirm your password to proceed with changing your email address.'
-      );
+      expect(wrapper.state().errors.confirmationPassword).toBe('Please confirm your password to proceed with changing your email address.');
     });
-    it('should set state on success', function(done) {
-      const setCurrentUserMock = jest.fn();
-      const responseObj = {
+    it('should set state on success', function (done) {
+      var setCurrentUserMock = jest.fn();
+      var responseObj = {
         email: updatedProps.email,
         firstName: updatedProps.firstName,
         lastName: updatedProps.lastName,
@@ -238,29 +196,22 @@ describe('<ProfileDetails/>', function() {
         externalId: '',
         externalData: null
       };
-      const preventDefaultMock = jest.fn();
+      var preventDefaultMock = jest.fn();
       updateCustomerRequest.mockResolvedValue({
         responseData: responseObj,
         errors: []
       });
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(PureProfileDetails, {
-          ...defaultProps,
-          isLoading: false,
-          setCurrentUser: setCurrentUserMock
-        })
-      );
+      var wrapper = mount( /*#__PURE__*/React.createElement(PureProfileDetails, Object.assign({}, defaultProps, {
+        isLoading: false,
+        setCurrentUser: setCurrentUserMock
+      })));
       wrapper.setState({
         isSectionDisabled: false,
-        updated: _objectSpread(
-          _objectSpread({}, updatedProps),
-          {},
-          {
-            birthDate: updatedProps.birthDate.answer,
-            phoneNumber: updatedProps.phoneNumber.answer,
-            companyName: updatedProps.companyName.answer
-          }
-        )
+        updated: _objectSpread(_objectSpread({}, updatedProps), {}, {
+          birthDate: updatedProps.birthDate.answer,
+          phoneNumber: updatedProps.phoneNumber.answer,
+          companyName: updatedProps.companyName.answer
+        })
       });
       updateCaptureAnswers.mockResolvedValue({
         responseData: {
@@ -272,16 +223,16 @@ describe('<ProfileDetails/>', function() {
         preventDefault: preventDefaultMock
       });
       expect(wrapper.state().isSubmittingPending).toBe(true);
-      setImmediate(function() {
+      setImmediate(function () {
         expect(wrapper.state().isSubmittingPending).toBe(false);
         expect(wrapper.state().isSectionDisabled).toBe(true);
         expect(setCurrentUserMock).toHaveBeenCalledWith(responseObj);
         done();
       });
     });
-    it('should set errors when request faild', function(done) {
-      const setCurrentUserMock = jest.fn();
-      const preventDefaultMock = jest.fn();
+    it('should set errors when request faild', function (done) {
+      var setCurrentUserMock = jest.fn();
+      var preventDefaultMock = jest.fn();
       updateCustomerRequest.mockResolvedValue({
         errors: ['Incorrect e-mail']
       });
@@ -291,12 +242,9 @@ describe('<ProfileDetails/>', function() {
         },
         errors: []
       });
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(PureProfileDetails, {
-          ...defaultProps,
-          setCurrentUser: setCurrentUserMock
-        })
-      );
+      var wrapper = mount( /*#__PURE__*/React.createElement(PureProfileDetails, Object.assign({}, defaultProps, {
+        setCurrentUser: setCurrentUserMock
+      })));
       wrapper.setState({
         isSectionDisabled: false,
         updatedEmail: updatedProps.email,
@@ -308,7 +256,7 @@ describe('<ProfileDetails/>', function() {
         preventDefault: preventDefaultMock
       });
       expect(wrapper.state().isSubmittingPending).toBe(true);
-      setImmediate(function() {
+      setImmediate(function () {
         expect(wrapper.state().isSubmittingPending).toBe(false);
         expect(wrapper.state().errors.confirmationPassword).toEqual('');
         expect(wrapper.state().errors.email).toEqual('Incorrect e-mail');

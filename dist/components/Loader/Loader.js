@@ -1,34 +1,19 @@
 import React from 'react';
 import { LoaderStyled } from './LoaderStyled';
 
-const Loader = function Loader(_ref) {
-  const { buttonLoader } = _ref;
-  const { smallLoader } = _ref;
-  const { centered } = _ref;
-  const { color } = _ref;
-  const { isMyAccount } = _ref;
-  return /* #__PURE__ */ React.createElement(
-    LoaderStyled,
-    {
-      buttonLoader,
-      smallLoader,
-      centered,
-      color,
-      isMyAccount
-    },
-    /* #__PURE__ */ React.createElement('div', null),
-    /* #__PURE__ */ React.createElement('div', null),
-    /* #__PURE__ */ React.createElement('div', null),
-    /* #__PURE__ */ React.createElement('div', null),
-    /* #__PURE__ */ React.createElement('div', null),
-    /* #__PURE__ */ React.createElement('div', null),
-    /* #__PURE__ */ React.createElement('div', null),
-    /* #__PURE__ */ React.createElement('div', null),
-    /* #__PURE__ */ React.createElement('div', null),
-    /* #__PURE__ */ React.createElement('div', null),
-    /* #__PURE__ */ React.createElement('div', null),
-    /* #__PURE__ */ React.createElement('div', null)
-  );
+var Loader = function Loader(_ref) {
+  var buttonLoader = _ref.buttonLoader,
+      smallLoader = _ref.smallLoader,
+      centered = _ref.centered,
+      color = _ref.color,
+      isMyAccount = _ref.isMyAccount;
+  return /*#__PURE__*/React.createElement(LoaderStyled, {
+    buttonLoader: buttonLoader,
+    smallLoader: smallLoader,
+    centered: centered,
+    color: color,
+    isMyAccount: isMyAccount
+  }, /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null));
 };
 
 Loader.defaultProps = {

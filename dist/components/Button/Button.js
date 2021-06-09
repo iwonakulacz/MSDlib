@@ -2,7 +2,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ButtonStyled from './ButtonStyled';
-
 export var BUTTON_SIZE = {
   BIG: 'big'
 };
@@ -16,24 +15,24 @@ export var BUTTON_THEME = {
   CONFIRM: 'confirm'
 };
 
-const Button = function Button(_ref) {
-  const { type } = _ref;
-  const { onClickFn } = _ref;
-  const { disabled } = _ref;
-  const { children } = _ref;
-  const { isLink } = _ref;
-  const { to } = _ref;
-  const { label } = _ref;
-  const { size } = _ref;
-  const { theme } = _ref;
-  const { fontSize } = _ref;
-  const { margin } = _ref;
-  const { fontWeight } = _ref;
-  const { width } = _ref;
-  const { icon } = _ref;
-  const { padding } = _ref;
-  const { className } = _ref;
-  const LinkProps = {
+var Button = function Button(_ref) {
+  var type = _ref.type,
+      onClickFn = _ref.onClickFn,
+      disabled = _ref.disabled,
+      children = _ref.children,
+      isLink = _ref.isLink,
+      to = _ref.to,
+      label = _ref.label,
+      size = _ref.size,
+      theme = _ref.theme,
+      fontSize = _ref.fontSize,
+      margin = _ref.margin,
+      fontWeight = _ref.fontWeight,
+      width = _ref.width,
+      icon = _ref.icon,
+      padding = _ref.padding,
+      className = _ref.className;
+  var LinkProps = {
     as: Link,
     to: {
       pathname: to.pathname,
@@ -42,28 +41,23 @@ const Button = function Button(_ref) {
       }
     }
   };
-  const ButtonProps = {
-    type,
+  var ButtonProps = {
+    type: type,
     onClick: onClickFn
   };
-  return /* #__PURE__ */ React.createElement(
-    ButtonStyled,
-    {
-      ...(isLink ? LinkProps : ButtonProps),
-      disabled,
-      'aria-label': label,
-      size,
-      theme,
-      fontSize,
-      margin,
-      fontWeight,
-      width,
-      icon,
-      padding,
-      className
-    },
-    children
-  );
+  return /*#__PURE__*/React.createElement(ButtonStyled, Object.assign({}, isLink ? LinkProps : ButtonProps, {
+    disabled: disabled,
+    "aria-label": label,
+    size: size,
+    theme: theme,
+    fontSize: fontSize,
+    margin: margin,
+    fontWeight: fontWeight,
+    width: width,
+    icon: icon,
+    padding: padding,
+    className: className
+  }), children);
 };
 
 export default Button;

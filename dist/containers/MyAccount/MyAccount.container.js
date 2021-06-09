@@ -1,13 +1,8 @@
 import { connect } from 'react-redux';
-import {
-  setCurrentUser as _setCurrentUser,
-  setConsents as _setConsents,
-  setConsentsError as _setConsentsError
-} from 'redux/userProfile';
+import { setCurrentUser as _setCurrentUser, setConsents as _setConsents, setConsentsError as _setConsentsError } from 'redux/userProfile';
 import { setCurrentPlan as _setCurrentPlan } from 'redux/planDetails';
 import { showPopup as _showPopup, hidePopup as _hidePopup } from 'redux/popup';
 import MyAccount from './MyAccount.component';
-
 export var mapStateToProps = function mapStateToProps(state) {
   return {
     userProfile: state.userProfile,
@@ -38,8 +33,5 @@ export var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }
   };
 };
-export var MyAccountContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MyAccount);
+export var MyAccountContainer = connect(mapStateToProps, mapDispatchToProps)(MyAccount);
 export default MyAccountContainer;

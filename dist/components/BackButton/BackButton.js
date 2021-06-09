@@ -3,22 +3,18 @@ import { withTranslation } from 'react-i18next';
 import Button from 'components/Button';
 import labeling from 'containers/labeling';
 
-const BackButton = function BackButton(_ref) {
-  const { isMyAccount } = _ref;
-  const { onClickFn } = _ref;
-  const { t } = _ref;
-  return /* #__PURE__ */ React.createElement(
-    Button,
-    {
-      isLink: !onClickFn,
-      to: {
-        pathname: isMyAccount ? '/my-account/login' : '/login'
-      },
-      onClickFn,
-      theme: 'navLink'
+var BackButton = function BackButton(_ref) {
+  var isMyAccount = _ref.isMyAccount,
+      onClickFn = _ref.onClickFn,
+      t = _ref.t;
+  return /*#__PURE__*/React.createElement(Button, {
+    isLink: !onClickFn,
+    to: {
+      pathname: isMyAccount ? '/my-account/login' : '/login'
     },
-    t('Back to login')
-  );
+    onClickFn: onClickFn,
+    theme: "navLink"
+  }, t('Back to login'));
 };
 
 BackButton.defaultProps = {

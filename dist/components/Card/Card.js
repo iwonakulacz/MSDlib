@@ -1,20 +1,16 @@
 import React from 'react';
 import { WrapStyled } from './CardStyled';
 
-const Card = function Card(_ref) {
-  const { className } = _ref;
-  const { children } = _ref;
-  const { withShadow } = _ref;
-  const { withBorder } = _ref;
-  return /* #__PURE__ */ React.createElement(
-    WrapStyled,
-    {
-      withShadow,
-      className,
-      withBorder
-    },
-    children
-  );
+var Card = function Card(_ref) {
+  var className = _ref.className,
+      children = _ref.children,
+      withShadow = _ref.withShadow,
+      withBorder = _ref.withBorder;
+  return /*#__PURE__*/React.createElement(WrapStyled, {
+    withShadow: withShadow,
+    className: className,
+    withBorder: withBorder
+  }, children);
 };
 
 export default Card;

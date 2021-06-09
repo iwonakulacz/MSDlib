@@ -5,8 +5,7 @@ import userProfileReducer from './userProfile';
 import popupReducer from './popup';
 import appConfigReducer from './appConfig';
 import innerPopupReducer from './innerPopupReducer';
-
-const rootReducer = combineReducers({
+var rootReducer = combineReducers({
   paymentInfo: paymentInfoReducer,
   planDetails: paymentDetailsReducer,
   userProfile: userProfileReducer,

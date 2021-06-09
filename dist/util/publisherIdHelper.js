@@ -1,9 +1,7 @@
 import { setData, getData } from 'util/appConfigHelper';
 
-const savePublisherId = function savePublisherId(location, setPublisherId) {
-  const publisherIdFromQuery = new URLSearchParams(location.search).get(
-    'publisher'
-  );
+var savePublisherId = function savePublisherId(location, setPublisherId) {
+  var publisherIdFromQuery = new URLSearchParams(location.search).get('publisher');
 
   if (publisherIdFromQuery) {
     setPublisherId(publisherIdFromQuery);

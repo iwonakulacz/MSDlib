@@ -1,7 +1,7 @@
 import { setData, getData } from 'util/appConfigHelper';
 
-const saveOfferId = function saveOfferId(location, setOfferId) {
-  const offerIdFromQuery = new URLSearchParams(location.search).get('offer');
+var saveOfferId = function saveOfferId(location, setOfferId) {
+  var offerIdFromQuery = new URLSearchParams(location.search).get('offer');
 
   if (offerIdFromQuery) {
     setOfferId(offerIdFromQuery);

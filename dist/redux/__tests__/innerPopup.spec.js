@@ -1,11 +1,7 @@
-import innerPopupReducer, {
-  SHOW_INNER_POPUP,
-  HIDE_INNER_POPUP
-} from 'redux/innerPopupReducer';
-
-describe('InnerPopup reducer', function() {
-  it('should correctly call showInnerPopup action', function() {
-    const action = {
+import innerPopupReducer, { SHOW_INNER_POPUP, HIDE_INNER_POPUP } from 'redux/innerPopupReducer';
+describe('InnerPopup reducer', function () {
+  it('should correctly call showInnerPopup action', function () {
+    var action = {
       type: SHOW_INNER_POPUP,
       payload: {
         type: 'updateSubscription',
@@ -14,7 +10,7 @@ describe('InnerPopup reducer', function() {
         }
       }
     };
-    const expectedState = {
+    var expectedState = {
       isOpen: true,
       type: 'updateSubscription',
       data: {
@@ -23,11 +19,11 @@ describe('InnerPopup reducer', function() {
     };
     expect(innerPopupReducer(undefined, action)).toMatchObject(expectedState);
   });
-  it('should correctly call hideInnerPopup action', function() {
-    const action = {
+  it('should correctly call hideInnerPopup action', function () {
+    var action = {
       type: HIDE_INNER_POPUP
     };
-    const expectedState = {
+    var expectedState = {
       isOpen: false,
       type: '',
       data: {}

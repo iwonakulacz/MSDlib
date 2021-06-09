@@ -141,19 +141,16 @@ export var currencyFormat = {
   '£': '£'
 };
 export function dateFormat(timestamp) {
-  const showTime =
-    arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  const date = new Date(timestamp * 1000);
-  const resultString = date.toLocaleDateString();
+  var showTime = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var date = new Date(timestamp * 1000);
+  var resultString = date.toLocaleDateString();
 
   if (showTime) {
-    return ''.concat(resultString, ' ').concat(
-      date.toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-        timeZoneName: 'short'
-      })
-    );
+    return "".concat(resultString, " ").concat(date.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZoneName: 'short'
+    }));
   }
 
   return resultString;

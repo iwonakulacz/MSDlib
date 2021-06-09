@@ -1,16 +1,15 @@
 /* eslint-disable no-param-reassign */
 import { createAction, createReducer } from '@reduxjs/toolkit';
-
 export var SHOW_INNER_POPUP = 'SHOW_INNER_POPUP';
 export var showInnerPopup = createAction(SHOW_INNER_POPUP);
 export var HIDE_INNER_POPUP = 'HIDE_INNER_POPUP';
 export var hideInnerPopup = createAction(HIDE_INNER_POPUP);
-const initialState = {
+var initialState = {
   isOpen: false,
   type: '',
   data: {}
 };
-const popupReducer = createReducer(initialState, {
+var popupReducer = createReducer(initialState, {
   SHOW_INNER_POPUP: function SHOW_INNER_POPUP(state, action) {
     state.isOpen = true;
     state.type = action.payload.type;

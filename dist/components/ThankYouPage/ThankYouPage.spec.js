@@ -2,14 +2,13 @@
 import Button from 'components/Button';
 import { mountComponentHelper } from 'test/testComponentHelper';
 import ThankYouPage from './ThankYouPage';
+var renderComponent = mountComponentHelper(ThankYouPage);
+describe('<ThankYouPage/>', function () {
+  var _renderComponent = renderComponent(),
+      wrapper = _renderComponent.wrapper;
 
-const renderComponent = mountComponentHelper(ThankYouPage);
-describe('<ThankYouPage/>', function() {
-  const _renderComponent = renderComponent();
-  const { wrapper } = _renderComponent;
-
-  describe('@renders', function() {
-    it('should render initial state', function() {
+  describe('@renders', function () {
+    it('should render initial state', function () {
       expect(wrapper.find(Button).exists()).toEqual(true);
     });
   });

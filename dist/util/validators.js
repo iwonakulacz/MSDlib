@@ -4,7 +4,7 @@ export function validateEmail(email) {
   return re.test(String(email).toLowerCase());
 }
 export function validateConsents(value, consentDefinitions) {
-  return consentDefinitions.every(function(consent, index) {
+  return consentDefinitions.every(function (consent, index) {
     return !(consent.required && !value[index]);
   });
 }
@@ -16,7 +16,7 @@ export function validateConsentsField(value, consents) {
   return '';
 }
 export function validatePasswordField(password) {
-  let message = '';
+  var message = '';
 
   if (password === '') {
     message = 'Please fill out this field.';
@@ -25,21 +25,20 @@ export function validatePasswordField(password) {
   return message;
 }
 export function validateRegisterPassword(password) {
-  let message = '';
-  const re = /[0-9]+/;
-  const validPassword = re.test(password) && password.length >= 8;
+  var message = '';
+  var re = /[0-9]+/;
+  var validPassword = re.test(password) && password.length >= 8;
 
   if (password === '') {
     message = 'Please fill out this field.';
   } else if (!validPassword) {
-    message =
-      'Your password must contain at least 8 characters, including 1 digit.';
+    message = 'Your password must contain at least 8 characters, including 1 digit.';
   }
 
   return message;
 }
 export function validateEmailField(value) {
-  let message = '';
+  var message = '';
 
   if (!validateEmail(value)) {
     message = 'The email address is not properly formatted.';

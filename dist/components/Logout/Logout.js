@@ -4,18 +4,14 @@ import labeling from 'containers/labeling';
 import Button from 'components/Button';
 import Auth from 'services/auth';
 
-const Logout = function Logout(_ref) {
-  const { t } = _ref;
-  return /* #__PURE__ */ React.createElement(
-    Button,
-    {
-      onClickFn: function onClickFn() {
-        return Auth.logout();
-      },
-      theme: 'navLink'
+var Logout = function Logout(_ref) {
+  var t = _ref.t;
+  return /*#__PURE__*/React.createElement(Button, {
+    onClickFn: function onClickFn() {
+      return Auth.logout();
     },
-    t('Back to login')
-  );
+    theme: "navLink"
+  }, t('Back to login'));
 };
 
 Logout.defaultProps = {

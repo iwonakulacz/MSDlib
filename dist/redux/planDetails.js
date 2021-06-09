@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 import { createAction, createReducer } from '@reduxjs/toolkit';
-
 export var SET_CURRENT_PLAN = 'SET_CURRENT_PLAN';
 export var setCurrentPlan = createAction(SET_CURRENT_PLAN);
 export var UPDATE_LIST = 'UPDATE_LIST';
@@ -9,13 +8,13 @@ export var SET_OFFER_TO_SWITCH = 'SET_OFFER_TO_SWITCH';
 export var setOfferToSwitch = createAction(SET_OFFER_TO_SWITCH);
 export var SET_SWITCH_SETTINGS = 'SET_SWITCH_SETTINGS';
 export var setSwitchSettings = createAction(SET_SWITCH_SETTINGS);
-const initialState = {
+var initialState = {
   currentPlan: [],
   updateList: false,
   offerToSwitch: {},
   switchSettings: {}
 };
-const paymentDetailsReducer = createReducer(initialState, {
+var paymentDetailsReducer = createReducer(initialState, {
   SET_CURRENT_PLAN: function SET_CURRENT_PLAN(state, action) {
     state.currentPlan = action.payload;
   },

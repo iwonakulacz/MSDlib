@@ -8,40 +8,34 @@ import EmailInput from 'components/EmailInput';
 import Consent from 'components/Consents';
 import PasswordInput from 'components/PasswordInput';
 import RegisterForm from './RegisterForm';
-
 jest.mock('api/Auth/registerCustomer');
 jest.mock('api/Customer/getCustomerLocales');
 jest.mock('api/Customer/submitConsents');
-const mockInputValue = 'MOCK_INPUT_VALUE11';
-const mockEmailValue = 'mockmail@mock.com';
-const mockNotValidEmail = 'mock';
-const onSubmitMock = jest.fn().mockImplementation(function() {
-  return new Promise(function(resolve) {
+var mockInputValue = 'MOCK_INPUT_VALUE11';
+var mockEmailValue = 'mockmail@mock.com';
+var mockNotValidEmail = 'mock';
+var onSubmitMock = jest.fn().mockImplementation(function () {
+  return new Promise(function (resolve) {
     resolve(false);
   });
 });
-const mockConsentValue = [true];
-const mockConsentDefinitions = [
-  {
-    name: 'name',
-    version: '1',
-    required: true
-  }
-];
-const jwtMock =
-  'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcklkIjoiNjkwNjI0MjU1IiwicHVibGlzaGVySWQiOjEyMDM1NTU1OX0.EvaMwJ1ZtGR4TNujmROVxiXhiHxzTOp0vgCJPoScXW2bBSroAGsm8kLe-ivnqQ9xoiHJWtDRYZGLKSGASFVuo0bqJT2ZzVEohvCPRwMke0R87p_eaTztWvAUjhbUP0Dk9xo8_AeDvEIDmGln_NXJvTTn6EqU_Xk2Zq3W29_WtbEOjfPplCp49gerR_VpnWA36yTUhfF2sWA1ir0F2HymsDvoQ_6dc8t7nENdslJY08kW-_mSQgj4SbOf4uXgiKAlPU8x3LWzUbO9uFF-eAND7hrJGM-FIWcJreW92DRXmuUMBfe_ws9KXzv-F5gKVcuz7qOpyykkJtZSBvFQJtKMaw';
-describe('RegisterForm', function() {
-  afterEach(function() {
+var mockConsentValue = [true];
+var mockConsentDefinitions = [{
+  name: 'name',
+  version: '1',
+  required: true
+}];
+var jwtMock = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcklkIjoiNjkwNjI0MjU1IiwicHVibGlzaGVySWQiOjEyMDM1NTU1OX0.EvaMwJ1ZtGR4TNujmROVxiXhiHxzTOp0vgCJPoScXW2bBSroAGsm8kLe-ivnqQ9xoiHJWtDRYZGLKSGASFVuo0bqJT2ZzVEohvCPRwMke0R87p_eaTztWvAUjhbUP0Dk9xo8_AeDvEIDmGln_NXJvTTn6EqU_Xk2Zq3W29_WtbEOjfPplCp49gerR_VpnWA36yTUhfF2sWA1ir0F2HymsDvoQ_6dc8t7nENdslJY08kW-_mSQgj4SbOf4uXgiKAlPU8x3LWzUbO9uFF-eAND7hrJGM-FIWcJreW92DRXmuUMBfe_ws9KXzv-F5gKVcuz7qOpyykkJtZSBvFQJtKMaw';
+describe('RegisterForm', function () {
+  afterEach(function () {
     delete global.__mobxInstanceCount; // eslint-disable-line
   });
-  describe('@events', function() {
-    it('should update state on input change', function() {
-      const wrapper = shallow(
-        /* #__PURE__ */ React.createElement(RegisterForm, null)
-      );
-      const instance = wrapper.instance();
-      const emailInput = wrapper.find(EmailInput);
-      const passwordInput = wrapper.find(PasswordInput);
+  describe('@events', function () {
+    it('should update state on input change', function () {
+      var wrapper = shallow( /*#__PURE__*/React.createElement(RegisterForm, null));
+      var instance = wrapper.instance();
+      var emailInput = wrapper.find(EmailInput);
+      var passwordInput = wrapper.find(PasswordInput);
       expect(wrapper.find(Consent).exists()).toBe(true);
       emailInput.simulate('change', mockEmailValue);
       passwordInput.simulate('change', mockInputValue);
@@ -51,13 +45,11 @@ describe('RegisterForm', function() {
       expect(wrapper.state().consents).toBe(mockConsentValue);
       expect(wrapper.state().consentDefinitions).toBe(mockConsentDefinitions);
     });
-    it('should set error and not call onSubmit cb when email empty', function() {
-      const submitWrapper = mount(
-        /* #__PURE__ */ React.createElement(RegisterForm, {
-          onSubmit: onSubmitMock
-        })
-      );
-      const instance = submitWrapper.instance();
+    it('should set error and not call onSubmit cb when email empty', function () {
+      var submitWrapper = mount( /*#__PURE__*/React.createElement(RegisterForm, {
+        onSubmit: onSubmitMock
+      }));
+      var instance = submitWrapper.instance();
       onSubmitMock.mockClear();
       instance.setState({
         email: '',
@@ -71,13 +63,11 @@ describe('RegisterForm', function() {
       expect(submitWrapper.state().errors.password).toBe('');
       expect(submitWrapper.state().errors.consents).toBe('');
     });
-    it('should set error and not call onSubmit cb when password empty', function() {
-      const submitWrapper = mount(
-        /* #__PURE__ */ React.createElement(RegisterForm, {
-          onSubmit: onSubmitMock
-        })
-      );
-      const instance = submitWrapper.instance();
+    it('should set error and not call onSubmit cb when password empty', function () {
+      var submitWrapper = mount( /*#__PURE__*/React.createElement(RegisterForm, {
+        onSubmit: onSubmitMock
+      }));
+      var instance = submitWrapper.instance();
       onSubmitMock.mockClear();
       instance.setState({
         email: mockEmailValue,
@@ -91,13 +81,11 @@ describe('RegisterForm', function() {
       expect(submitWrapper.state().errors.consents).toBe('');
       expect(submitWrapper.state().errors.email).toBe('');
     });
-    it('should set error and not call onSubmit cb when required consents not checked', function() {
-      const submitWrapper = mount(
-        /* #__PURE__ */ React.createElement(RegisterForm, {
-          onSubmit: onSubmitMock
-        })
-      );
-      const instance = submitWrapper.instance();
+    it('should set error and not call onSubmit cb when required consents not checked', function () {
+      var submitWrapper = mount( /*#__PURE__*/React.createElement(RegisterForm, {
+        onSubmit: onSubmitMock
+      }));
+      var instance = submitWrapper.instance();
       onSubmitMock.mockClear();
       instance.setState({
         email: mockEmailValue,
@@ -111,14 +99,12 @@ describe('RegisterForm', function() {
       expect(submitWrapper.state().errors.password).toBe('');
       expect(submitWrapper.state().errors.email).toBe('');
     });
-    it('should set error and not call onSubmit cb when email not valid', function() {
-      const submitWrapper = mount(
-        /* #__PURE__ */ React.createElement(RegisterForm, {
-          onSubmit: onSubmitMock
-        })
-      );
-      const instance = submitWrapper.instance();
-      const preventDefaultMock = jest.fn();
+    it('should set error and not call onSubmit cb when email not valid', function () {
+      var submitWrapper = mount( /*#__PURE__*/React.createElement(RegisterForm, {
+        onSubmit: onSubmitMock
+      }));
+      var instance = submitWrapper.instance();
+      var preventDefaultMock = jest.fn();
       onSubmitMock.mockClear();
       instance.setState({
         email: mockNotValidEmail,
@@ -130,17 +116,15 @@ describe('RegisterForm', function() {
       expect(onSubmitMock).not.toHaveBeenCalled();
       expect(submitWrapper.state().errors.email).not.toBe('');
     });
-    it('should return offer error when offerId is not given', function(done) {
-      const preventDefaultMock = jest.fn();
-      const setOfferErrorMock = jest.fn();
+    it('should return offer error when offerId is not given', function (done) {
+      var preventDefaultMock = jest.fn();
+      var setOfferErrorMock = jest.fn();
       onSubmitMock.mockClear();
-      const wrapper = shallow(
-        /* #__PURE__ */ React.createElement(RegisterForm, {
-          offerId: '',
-          setOfferError: setOfferErrorMock
-        })
-      );
-      const instance = wrapper.instance();
+      var wrapper = shallow( /*#__PURE__*/React.createElement(RegisterForm, {
+        offerId: "",
+        setOfferError: setOfferErrorMock
+      }));
+      var instance = wrapper.instance();
       instance.setState({
         email: 'john@example.com',
         password: 'testtest123'
@@ -150,16 +134,14 @@ describe('RegisterForm', function() {
         preventDefault: preventDefaultMock
       });
       expect(preventDefaultMock).toHaveBeenCalledTimes(1);
-      setImmediate(function() {
+      setImmediate(function () {
         expect(setOfferErrorMock).toHaveBeenCalled();
         done();
       });
     });
-    it('should validate fields on blur', function() {
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(RegisterForm, null)
-      );
-      const instance = wrapper.instance();
+    it('should validate fields on blur', function () {
+      var wrapper = mount( /*#__PURE__*/React.createElement(RegisterForm, null));
+      var instance = wrapper.instance();
       instance.setState({
         email: '',
         password: ''
@@ -169,17 +151,15 @@ describe('RegisterForm', function() {
       expect(instance.state.errors.email).not.toBe('');
       expect(instance.state.errors.password).not.toBe('');
     });
-    it('should update state when show password icon clicked', function() {
-      const registerWrapper = mount(
-        /* #__PURE__ */ React.createElement(RegisterForm, null)
-      );
-      const instance = registerWrapper.instance();
+    it('should update state when show password icon clicked', function () {
+      var registerWrapper = mount( /*#__PURE__*/React.createElement(RegisterForm, null));
+      var instance = registerWrapper.instance();
       instance.handleClickShowPassword({
         preventDefault: jest.fn()
       });
       expect(instance.state.showPassword).toBe(true);
     });
-    it('should set general error when request failed', function(done) {
+    it('should set general error when request failed', function (done) {
       getCustomerLocalesRequest.mockResolvedValue({
         responseData: {
           locale: 'pl_PL',
@@ -190,14 +170,12 @@ describe('RegisterForm', function() {
       registerCustomerRequest.mockResolvedValue({
         status: 500
       });
-      const wrapper = shallow(
-        /* #__PURE__ */ React.createElement(RegisterForm, {
-          onRegistrationComplete: onSubmitMock,
-          offerId: 'S705970293_NL'
-        })
-      );
-      const instance = wrapper.instance();
-      const preventDefaultMock = jest.fn();
+      var wrapper = shallow( /*#__PURE__*/React.createElement(RegisterForm, {
+        onRegistrationComplete: onSubmitMock,
+        offerId: "S705970293_NL"
+      }));
+      var instance = wrapper.instance();
+      var preventDefaultMock = jest.fn();
       instance.setState({
         email: 'john@example.com',
         password: 'testtest123'
@@ -205,21 +183,19 @@ describe('RegisterForm', function() {
       wrapper.simulate('submit', {
         preventDefault: preventDefaultMock
       });
-      setImmediate(function() {
+      setImmediate(function () {
         expect(instance.state.generalError).toBe('An error occurred.');
         done();
       });
     });
-    it('should set general error when getLocales failed', function(done) {
+    it('should set general error when getLocales failed', function (done) {
       getCustomerLocalesRequest.mockResolvedValue({});
-      const wrapper = shallow(
-        /* #__PURE__ */ React.createElement(RegisterForm, {
-          onRegistrationComplete: onSubmitMock,
-          offerId: 'S705970293_NL'
-        })
-      );
-      const instance = wrapper.instance();
-      const preventDefaultMock = jest.fn();
+      var wrapper = shallow( /*#__PURE__*/React.createElement(RegisterForm, {
+        onRegistrationComplete: onSubmitMock,
+        offerId: "S705970293_NL"
+      }));
+      var instance = wrapper.instance();
+      var preventDefaultMock = jest.fn();
       instance.setState({
         email: 'john@example.com',
         password: 'testtest123'
@@ -227,12 +203,12 @@ describe('RegisterForm', function() {
       wrapper.simulate('submit', {
         preventDefault: preventDefaultMock
       });
-      setImmediate(function() {
+      setImmediate(function () {
         expect(instance.state.generalError).toBe('An error occurred.');
         done();
       });
     });
-    it('should call onSubmit cb when fields valid', function(done) {
+    it('should call onSubmit cb when fields valid', function (done) {
       getCustomerLocalesRequest.mockResolvedValue({
         responseData: {
           locale: 'pl_PL',
@@ -246,13 +222,11 @@ describe('RegisterForm', function() {
           jwt: jwtMock
         }
       });
-      const wrapper = shallow(
-        /* #__PURE__ */ React.createElement(RegisterForm, {
-          offerId: 'S705970293_NL'
-        })
-      );
-      const instance = wrapper.instance();
-      const preventDefaultMock = jest.fn();
+      var wrapper = shallow( /*#__PURE__*/React.createElement(RegisterForm, {
+        offerId: "S705970293_NL"
+      }));
+      var instance = wrapper.instance();
+      var preventDefaultMock = jest.fn();
       Auth.login = jest.fn();
       instance.setState({
         email: mockEmailValue,
@@ -266,24 +240,17 @@ describe('RegisterForm', function() {
       });
       expect(preventDefaultMock).toHaveBeenCalledTimes(1);
       expect(registerCustomerRequest).toHaveBeenCalled();
-      setImmediate(function() {
+      setImmediate(function () {
         expect(instance.state.errors.email).toBe('');
         expect(instance.state.errors.password).toBe('');
         expect(instance.state.generalError).toBe('');
         expect(Auth.login).toHaveBeenCalled();
         expect(Auth.login).toHaveBeenCalledTimes(1);
-        expect(Auth.login).toHaveBeenCalledWith(
-          false,
-          true,
-          mockEmailValue,
-          jwtMock,
-          submitConsentsRequest,
-          [mockConsentValue, mockConsentDefinitions]
-        );
+        expect(Auth.login).toHaveBeenCalledWith(false, true, mockEmailValue, jwtMock, submitConsentsRequest, [mockConsentValue, mockConsentDefinitions]);
         done();
       });
     });
-    it('should set general error when customer already exists', function(done) {
+    it('should set general error when customer already exists', function (done) {
       getCustomerLocalesRequest.mockResolvedValue({
         responseData: {
           locale: 'pl_PL',
@@ -295,26 +262,24 @@ describe('RegisterForm', function() {
         status: 422,
         errors: ['Customer already exists']
       });
-      const wrapper = shallow(
-        /* #__PURE__ */ React.createElement(RegisterForm, {
-          offerId: 'S705970293_NL'
-        })
-      );
-      const instance = wrapper.instance();
+      var wrapper = shallow( /*#__PURE__*/React.createElement(RegisterForm, {
+        offerId: "S705970293_NL"
+      }));
+      var instance = wrapper.instance();
       instance.setState({
         email: 'john@example.com',
         password: 'testtest123'
       });
-      const preventDefaultMock = jest.fn();
+      var preventDefaultMock = jest.fn();
       wrapper.simulate('submit', {
         preventDefault: preventDefaultMock
       });
-      setImmediate(function() {
+      setImmediate(function () {
         expect(instance.state.generalError).toBe('Customer already exists.');
         done();
       });
     });
-    it('should set error when faild with 429 code', function(done) {
+    it('should set error when faild with 429 code', function (done) {
       getCustomerLocalesRequest.mockResolvedValue({
         responseData: {
           locale: 'pl_PL',
@@ -325,24 +290,20 @@ describe('RegisterForm', function() {
       registerCustomerRequest.mockResolvedValue({
         status: 429
       });
-      const wrapper = shallow(
-        /* #__PURE__ */ React.createElement(RegisterForm, {
-          offerId: 'S705970293_NL'
-        })
-      );
-      const instance = wrapper.instance();
+      var wrapper = shallow( /*#__PURE__*/React.createElement(RegisterForm, {
+        offerId: "S705970293_NL"
+      }));
+      var instance = wrapper.instance();
       instance.setState({
         email: 'john@example.com',
         password: 'testtest123'
       });
-      const preventDefaultMock = jest.fn();
+      var preventDefaultMock = jest.fn();
       wrapper.simulate('submit', {
         preventDefault: preventDefaultMock
       });
-      setImmediate(function() {
-        expect(instance.state.generalError).toBe(
-          'Server overloaded. Please try again later.'
-        );
+      setImmediate(function () {
+        expect(instance.state.generalError).toBe('Server overloaded. Please try again later.');
         expect(instance.state.disableActionButton).toBe(true);
         done();
       });

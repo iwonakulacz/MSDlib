@@ -1,23 +1,23 @@
-import _slicedToArray from '/Users/iwonakulacz/Documents/repos/msd-package/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/slicedToArray';
+import _slicedToArray from "/Users/iwonakulacz/Documents/repos/msd-package/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/slicedToArray";
 import { useState } from 'react';
 
-const useMessage = function useMessage() {
-  const _useState = useState('');
-  const _useState2 = _slicedToArray(_useState, 2);
-  const message = _useState2[0];
-  const setMessageText = _useState2[1];
+var useMessage = function useMessage() {
+  var _useState = useState(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      message = _useState2[0],
+      setMessageText = _useState2[1];
 
-  const _useState3 = useState('');
-  const _useState4 = _slicedToArray(_useState3, 2);
-  const type = _useState4[0];
-  const setType = _useState4[1];
+  var _useState3 = useState(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      type = _useState4[0],
+      setType = _useState4[1];
 
-  const setMessage = function setMessage(newMessage) {
+  var setMessage = function setMessage(newMessage) {
     setMessageText(newMessage.message);
     setType(newMessage.type);
   };
 
-  const resetMessage = function resetMessage() {
+  var resetMessage = function resetMessage() {
     setMessageText('');
     setType('');
   };

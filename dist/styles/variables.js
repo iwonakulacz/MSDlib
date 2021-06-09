@@ -17,8 +17,7 @@ export var LineColor = '#D3DBE6';
 export var White = '#FFFFFF';
 export var ConfirmColor = '#4EB7A1';
 export var MediumGrey = '#b7bfca';
-export var TextFieldBorderFilter =
-  'invert(87%) sepia(14%) saturate(243%) hue-rotate(213deg) brightness(96%) contrast(80%)';
+export var TextFieldBorderFilter = 'invert(87%) sepia(14%) saturate(243%) hue-rotate(213deg) brightness(96%) contrast(80%)';
 export var FocusColor = '#80b4ea';
 export var PaymentButtonBgn = '#00112c';
 export var Weak = '#ea753c';

@@ -1,13 +1,6 @@
 import { connect } from 'react-redux';
-import {
-  setPaymentMethod as _setPaymentMethod,
-  setTransactionsList as _setTransactionsList,
-  setTransactionsToShow as _setTransactionsToShow,
-  setTransactionsListAsFetched as _setTransactionsListAsFetched,
-  hideShowMoreButton as _hideShowMoreButton
-} from 'redux/paymentInfo';
+import { setPaymentMethod as _setPaymentMethod, setTransactionsList as _setTransactionsList, setTransactionsToShow as _setTransactionsToShow, setTransactionsListAsFetched as _setTransactionsListAsFetched, hideShowMoreButton as _hideShowMoreButton } from 'redux/paymentInfo';
 import PaymentInfo from './PaymentInfo.component';
-
 export var mapStateToProps = function mapStateToProps(state) {
   return {
     paymentInfo: state.paymentInfo
@@ -32,8 +25,5 @@ export var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }
   };
 };
-const PlanDetailsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PaymentInfo);
+var PlanDetailsContainer = connect(mapStateToProps, mapDispatchToProps)(PaymentInfo);
 export default PlanDetailsContainer;

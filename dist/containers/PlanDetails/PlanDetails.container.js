@@ -1,16 +1,7 @@
 import { connect } from 'react-redux';
-import {
-  setCurrentPlan as _setCurrentPlan,
-  updateList as _updateList,
-  setOfferToSwitch as _setOfferToSwitch,
-  setSwitchSettings as _setSwitchSettings
-} from 'redux/planDetails';
-import {
-  showInnerPopup as _showInnerPopup,
-  hideInnerPopup as _hideInnerPopup
-} from 'redux/innerPopupReducer';
+import { setCurrentPlan as _setCurrentPlan, updateList as _updateList, setOfferToSwitch as _setOfferToSwitch, setSwitchSettings as _setSwitchSettings } from 'redux/planDetails';
+import { showInnerPopup as _showInnerPopup, hideInnerPopup as _hideInnerPopup } from 'redux/innerPopupReducer';
 import PlanDetails from './PlanDetails.component';
-
 export var mapStateToProps = function mapStateToProps(state) {
   return {
     planDetails: state.planDetails,
@@ -40,8 +31,5 @@ export var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }
   };
 };
-const PlanDetailsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PlanDetails);
+var PlanDetailsContainer = connect(mapStateToProps, mapDispatchToProps)(PlanDetails);
 export default PlanDetailsContainer;

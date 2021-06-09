@@ -1,34 +1,29 @@
 import popupReducer, { SHOW_POPUP, HIDE_POPUP } from 'redux/popup';
-
-describe('Popup reducer', function() {
-  it('should correctly call showPopup action', function() {
-    const action = {
+describe('Popup reducer', function () {
+  it('should correctly call showPopup action', function () {
+    var action = {
       type: SHOW_POPUP,
       payload: {
         type: 'termsNotAccepted',
-        consents: [
-          {
-            name: 'terms'
-          }
-        ]
+        consents: [{
+          name: 'terms'
+        }]
       }
     };
-    const expectedState = {
+    var expectedState = {
       isPopupShown: true,
       popupType: 'termsNotAccepted',
-      consents: [
-        {
-          name: 'terms'
-        }
-      ]
+      consents: [{
+        name: 'terms'
+      }]
     };
     expect(popupReducer(undefined, action)).toMatchObject(expectedState);
   });
-  it('should correctly call hidePopup action', function() {
-    const action = {
+  it('should correctly call hidePopup action', function () {
+    var action = {
       type: HIDE_POPUP
     };
-    const expectedState = {
+    var expectedState = {
       isPopupShown: false,
       popupType: '',
       consents: []

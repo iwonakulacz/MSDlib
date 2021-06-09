@@ -1,11 +1,6 @@
-import {
-  SET_CURRENT_USER,
-  SET_CONSENTS,
-  SET_CONSENTS_ERROR
-} from 'redux/userProfile';
+import { SET_CURRENT_USER, SET_CONSENTS, SET_CONSENTS_ERROR } from 'redux/userProfile';
 import userProfileReducer from '../userProfile';
-
-const currentUserMock = {
+var currentUserMock = {
   id: 338816933,
   email: 'user@example.com',
   firstName: '',
@@ -29,41 +24,37 @@ const currentUserMock = {
   externalId: '',
   externalData: null
 };
-describe('UserProfile reducer', function() {
-  it('should correctly call setCurrentPlan action', function() {
-    const action = {
+describe('UserProfile reducer', function () {
+  it('should correctly call setCurrentPlan action', function () {
+    var action = {
       type: SET_CURRENT_USER,
       payload: currentUserMock
     };
-    const expectedState = {
+    var expectedState = {
       user: currentUserMock
     };
     expect(userProfileReducer(undefined, action)).toMatchObject(expectedState);
   });
-  it('should correctly call setConsents action', function() {
-    const action = {
+  it('should correctly call setConsents action', function () {
+    var action = {
       type: SET_CONSENTS,
-      payload: [
-        {
-          name: 'terms'
-        }
-      ]
+      payload: [{
+        name: 'terms'
+      }]
     };
-    const expectedState = {
-      consents: [
-        {
-          name: 'terms'
-        }
-      ]
+    var expectedState = {
+      consents: [{
+        name: 'terms'
+      }]
     };
     expect(userProfileReducer(undefined, action)).toMatchObject(expectedState);
   });
-  it('should correctly call setConsentsError action', function() {
-    const action = {
+  it('should correctly call setConsentsError action', function () {
+    var action = {
       type: SET_CONSENTS_ERROR,
       payload: 'Failed to fetch'
     };
-    const expectedState = {
+    var expectedState = {
       consentsError: 'Failed to fetch'
     };
     expect(userProfileReducer(undefined, action)).toMatchObject(expectedState);

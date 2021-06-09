@@ -1,25 +1,25 @@
 import React from 'react';
 import Input from 'components/Input';
 
-const EmailInput = function EmailInput(_ref) {
-  const { value } = _ref;
-  const { onChange } = _ref;
-  const { onBlur } = _ref;
-  const { error } = _ref;
-  const { label } = _ref;
-  const { floatingLabels } = _ref;
-  const { required } = _ref;
-  const { reference } = _ref;
-  return /* #__PURE__ */ React.createElement(Input, {
+var EmailInput = function EmailInput(_ref) {
+  var value = _ref.value,
+      onChange = _ref.onChange,
+      onBlur = _ref.onBlur,
+      error = _ref.error,
+      label = _ref.label,
+      floatingLabels = _ref.floatingLabels,
+      required = _ref.required,
+      reference = _ref.reference;
+  return /*#__PURE__*/React.createElement(Input, {
     placeholder: label,
-    floatingLabels,
-    type: 'email',
-    value,
-    onChange,
-    onBlur,
-    error,
-    required,
-    reference,
+    floatingLabels: floatingLabels,
+    type: "email",
+    value: value,
+    onChange: onChange,
+    onBlur: onBlur,
+    error: error,
+    required: required,
+    reference: reference,
     ariaRequired: required,
     ariaInvalid: !!error
   });

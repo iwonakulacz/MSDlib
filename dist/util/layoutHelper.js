@@ -1,6 +1,6 @@
 import { getData, setData } from 'util/appConfigHelper';
 
-const isConfigSetted = function isConfigSetted(urlParam, configName) {
+var isConfigSetted = function isConfigSetted(urlParam, configName) {
   switch (new URLSearchParams(window.location.search).get(urlParam)) {
     case 'true':
       setData(configName, 'true');

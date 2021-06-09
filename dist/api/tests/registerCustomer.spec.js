@@ -1,14 +1,13 @@
 import registerCustomer from 'api/Auth/registerCustomer';
 import { sendMessage } from 'util/appConfigHelper';
-
-jest.mock('util/appConfigHelper', function() {
+jest.mock('util/appConfigHelper', function () {
   return {
     sendMessage: jest.fn()
   };
 });
-describe('registerCustomer', function() {
-  it('register user on call', function(done) {
-    const mockResponseData = {
+describe('registerCustomer', function () {
+  it('register user on call', function (done) {
+    var mockResponseData = {
       status: 200,
       responseData: {
         jwt: 'jvbreigburtij'
@@ -19,16 +18,16 @@ describe('registerCustomer', function() {
         return mockResponseData;
       }
     });
-    registerCustomer().then(function(res) {
+    registerCustomer().then(function (res) {
       expect(res).toEqual(mockResponseData);
       expect(sendMessage).toHaveBeenCalledWith(mockResponseData.responseData);
       done();
     });
   });
-  it('fails on remote call error', function(done) {
-    const mockError = 'mock-error';
+  it('fails on remote call error', function (done) {
+    var mockError = 'mock-error';
     jest.spyOn(global, 'fetch').mockRejectedValue(mockError);
-    registerCustomer().then(function(res) {
+    registerCustomer().then(function (res) {
       expect(res).toBe(mockError);
       done();
     });

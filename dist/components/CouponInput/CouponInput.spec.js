@@ -4,78 +4,65 @@ import 'jest-styled-components';
 import { MESSAGE_TYPE_SUCCESS } from 'components/Input/InputConstants';
 import Button from 'components/Button';
 import { PureCouponInput as CouponInput } from './CouponInput';
-import {
-  InputElementStyled,
-  MessageStyled,
-  CloseButtonStyled
-} from './CouponInputStyled';
-
+import { InputElementStyled, MessageStyled, CloseButtonStyled } from './CouponInputStyled';
 jest.useFakeTimers();
-const onSubmit = jest.fn().mockResolvedValue({});
-const onClose = jest.fn();
-const MOCK_MESSAGE_1 = 'MOCK_MESSAGE_1';
-const MOCK_MESSAGE_2 = 'MOCK_MESSAGE_2';
-const DELAY = 5000;
-describe('CouponInput', function() {
-  describe('@renders', function() {
-    it('should render initial state', function() {
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onSubmit
-        })
-      );
-      const inputComponent = wrapper.find(InputElementStyled);
+var onSubmit = jest.fn().mockResolvedValue({});
+var onClose = jest.fn();
+var MOCK_MESSAGE_1 = 'MOCK_MESSAGE_1';
+var MOCK_MESSAGE_2 = 'MOCK_MESSAGE_2';
+var DELAY = 5000;
+describe('CouponInput', function () {
+  describe('@renders', function () {
+    it('should render initial state', function () {
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onSubmit: onSubmit
+      }));
+      var inputComponent = wrapper.find(InputElementStyled);
       expect(inputComponent).toHaveLength(1);
       expect(wrapper.props().couponLoading).toBe(false);
       expect(wrapper.props().showMessage).toBe(false);
-      const inputElement = wrapper.find(InputElementStyled);
+      var inputElement = wrapper.find(InputElementStyled);
       expect(inputElement).toHaveLength(1);
       expect(inputElement.props().placeholder).toBe('Your coupon');
       expect(inputElement.props().autoComplete).toBe('off');
     });
-    it('should display message according to props', function() {
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onSubmit,
-          showMessage: true,
-          message: MOCK_MESSAGE_1,
-          messageType: MESSAGE_TYPE_SUCCESS
-        })
-      );
+    it('should display message according to props', function () {
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onSubmit: onSubmit,
+        showMessage: true,
+        message: MOCK_MESSAGE_1,
+        messageType: MESSAGE_TYPE_SUCCESS
+      }));
       wrapper.setState({
         isOpened: true
       });
-      const messageEl = wrapper.find(MessageStyled);
+      var messageEl = wrapper.find(MessageStyled);
       expect(messageEl.text()).toBe(MOCK_MESSAGE_1);
       expect(messageEl).toHaveStyleRule('opacity', '1');
     });
-    it("shouldn't display message if not specified", function() {
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onSubmit,
-          message: MOCK_MESSAGE_1,
-          messageType: MESSAGE_TYPE_SUCCESS
-        })
-      );
+    it("shouldn't display message if not specified", function () {
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onSubmit: onSubmit,
+        message: MOCK_MESSAGE_1,
+        messageType: MESSAGE_TYPE_SUCCESS
+      }));
       wrapper.setState({
         isOpened: true
       });
-      const messageEl = wrapper.find(MessageStyled);
+      var messageEl = wrapper.find(MessageStyled);
       expect(messageEl.text()).toBe(MOCK_MESSAGE_1);
       expect(messageEl).toHaveStyleRule('opacity', '0');
     });
   });
-  describe('@events', function() {
-    it('should call onChange cb when input change', function() {
-      const onChangeMock = jest.fn();
-      const MockInputValue = 'MOCKVALUE';
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onChange: onChangeMock,
-          onSubmit
-        })
-      );
-      const input = wrapper.find(InputElementStyled);
+  describe('@events', function () {
+    it('should call onChange cb when input change', function () {
+      var onChangeMock = jest.fn();
+      var MockInputValue = 'MOCKVALUE';
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onChange: onChangeMock,
+        onSubmit: onSubmit
+      }));
+      var input = wrapper.find(InputElementStyled);
       input.simulate('change', {
         target: {
           value: MockInputValue
@@ -83,22 +70,20 @@ describe('CouponInput', function() {
       });
       expect(onChangeMock).toHaveBeenCalledWith(MockInputValue);
     });
-    it('should call onSubmit when enter is pressed', function(done) {
+    it('should call onSubmit when enter is pressed', function (done) {
       onSubmit.mockClear();
-      const mockInputValue = 'MOCK_INPUT_VALUE';
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onSubmit
-        })
-      );
-      const input = wrapper.find(InputElementStyled);
+      var mockInputValue = 'MOCK_INPUT_VALUE';
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onSubmit: onSubmit
+      }));
+      var input = wrapper.find(InputElementStyled);
       input.blur = jest.fn();
       input.value = mockInputValue;
       input.simulate('keydown', {
         key: 'Enter',
         target: input
       });
-      setImmediate(function() {
+      setImmediate(function () {
         expect(onSubmit).toHaveBeenCalledWith(mockInputValue);
         expect(wrapper.state()).toMatchObject({
           suppressMessage: false
@@ -106,15 +91,13 @@ describe('CouponInput', function() {
         done();
       });
     });
-    it('should not call onSubmit when any other key is pressed', function() {
+    it('should not call onSubmit when any other key is pressed', function () {
       onSubmit.mockClear();
-      const mockInputValue = 'MOCK_INPUT_VALUE';
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onSubmit
-        })
-      );
-      const input = wrapper.find(InputElementStyled);
+      var mockInputValue = 'MOCK_INPUT_VALUE';
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onSubmit: onSubmit
+      }));
+      var input = wrapper.find(InputElementStyled);
       input.value = mockInputValue;
       input.simulate('keydown', {
         key: 'x',
@@ -126,15 +109,13 @@ describe('CouponInput', function() {
       });
       expect(onSubmit).not.toHaveBeenCalled();
     });
-    it('should blur on submit when', function() {
+    it('should blur on submit when', function () {
       onSubmit.mockClear();
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onSubmit
-        })
-      );
-      const input = wrapper.find(InputElementStyled);
-      const inputEl = wrapper.getDOMNode();
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onSubmit: onSubmit
+      }));
+      var input = wrapper.find(InputElementStyled);
+      var inputEl = wrapper.getDOMNode();
       jest.spyOn(inputEl, 'blur');
       input.simulate('keydown', {
         key: 'Enter',
@@ -142,31 +123,27 @@ describe('CouponInput', function() {
       });
       expect(inputEl.blur).toHaveBeenCalled();
     });
-    it('should suppress message on focus', function() {
+    it('should suppress message on focus', function () {
       onSubmit.mockClear();
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onSubmit,
-          showMessage: true,
-          message: MOCK_MESSAGE_1,
-          messageType: MESSAGE_TYPE_SUCCESS
-        })
-      );
-      const input = wrapper.find(InputElementStyled);
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onSubmit: onSubmit,
+        showMessage: true,
+        message: MOCK_MESSAGE_1,
+        messageType: MESSAGE_TYPE_SUCCESS
+      }));
+      var input = wrapper.find(InputElementStyled);
       input.simulate('focus');
       expect(wrapper.state().suppressMessage).toBe(true);
     });
-    it('should show previously suppressed message on props change', function() {
+    it('should show previously suppressed message on props change', function () {
       onSubmit.mockClear();
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onSubmit,
-          showMessage: true,
-          message: MOCK_MESSAGE_1,
-          messageType: MESSAGE_TYPE_SUCCESS
-        })
-      );
-      const input = wrapper.find(InputElementStyled);
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onSubmit: onSubmit,
+        showMessage: true,
+        message: MOCK_MESSAGE_1,
+        messageType: MESSAGE_TYPE_SUCCESS
+      }));
+      var input = wrapper.find(InputElementStyled);
       input.simulate('focus');
       expect(wrapper.state().suppressMessage).toBe(true);
       wrapper.setProps({
@@ -174,13 +151,11 @@ describe('CouponInput', function() {
       });
       expect(wrapper.state().suppressMessage).toBe(false);
     });
-    it('should suppress message after 5s', function() {
+    it('should suppress message after 5s', function () {
       onSubmit.mockClear();
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onSubmit
-        })
-      );
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onSubmit: onSubmit
+      }));
       wrapper.setProps({
         showMessage: true,
         message: MOCK_MESSAGE_1,
@@ -190,34 +165,30 @@ describe('CouponInput', function() {
       jest.advanceTimersByTime(DELAY);
       expect(wrapper.state().suppressMessage).toBe(true);
     });
-    it('should skip state update when unmounted during timeout', function() {
+    it('should skip state update when unmounted during timeout', function () {
       jest.spyOn(window, 'clearTimeout');
       onSubmit.mockClear();
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onSubmit
-        })
-      );
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onSubmit: onSubmit
+      }));
       wrapper.setProps({
         showMessage: true,
         message: MOCK_MESSAGE_1,
         messageType: MESSAGE_TYPE_SUCCESS
       });
 
-      const _wrapper$state = wrapper.state();
-      const { timeoutId } = _wrapper$state;
+      var _wrapper$state = wrapper.state(),
+          timeoutId = _wrapper$state.timeoutId;
 
       wrapper.unmount();
       expect(clearTimeout).toHaveBeenCalledWith(timeoutId);
     });
-    it('should open input field on first click and apply coupon on second click', function() {
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onSubmit,
-          value: 'mockValue'
-        })
-      );
-      const buttonComponent = wrapper.find(Button);
+    it('should open input field on first click and apply coupon on second click', function () {
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onSubmit: onSubmit,
+        value: "mockValue"
+      }));
+      var buttonComponent = wrapper.find(Button);
       expect(wrapper.state('isOpened')).toBe(false);
       buttonComponent.simulate('click');
       expect(wrapper.state('isOpened')).toBe(true);
@@ -225,15 +196,13 @@ describe('CouponInput', function() {
       expect(onSubmit).toHaveBeenCalled();
       expect(onSubmit).toHaveBeenCalledWith('mockValue');
     });
-    it('should close input field on close button click', function() {
-      const wrapper = mount(
-        /* #__PURE__ */ React.createElement(CouponInput, {
-          onSubmit,
-          onClose,
-          value: 'mockValue'
-        })
-      );
-      const buttonComponent = wrapper.find(CloseButtonStyled);
+    it('should close input field on close button click', function () {
+      var wrapper = mount( /*#__PURE__*/React.createElement(CouponInput, {
+        onSubmit: onSubmit,
+        onClose: onClose,
+        value: "mockValue"
+      }));
+      var buttonComponent = wrapper.find(CloseButtonStyled);
       wrapper.setState({
         isOpened: true
       });

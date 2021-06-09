@@ -1,11 +1,8 @@
 /* istanbul ignore file */
 import store from 'redux/store';
-import {
-  setData as setDataInRedux,
-  removeData as removeDataFromRedux
-} from 'redux/appConfig';
+import { setData as setDataInRedux, removeData as removeDataFromRedux } from 'redux/appConfig';
 
-const isLocalStorageAvailable = function isLocalStorageAvailable() {
+var isLocalStorageAvailable = function isLocalStorageAvailable() {
   try {
     localStorage.setItem('CLEENG_LS', 'yes');
 
@@ -21,28 +18,18 @@ const isLocalStorageAvailable = function isLocalStorageAvailable() {
 };
 
 export var getData = function getData(name) {
-  return isLocalStorageAvailable()
-    ? localStorage.getItem(name)
-    : store.getState().appConfig[name];
+  return isLocalStorageAvailable() ? localStorage.getItem(name) : store.getState().appConfig[name];
 };
 export var setData = function setData(name, value) {
-  return isLocalStorageAvailable()
-    ? localStorage.setItem(name, value)
-    : store.dispatch(
-        setDataInRedux({
-          name,
-          value
-        })
-      );
+  return isLocalStorageAvailable() ? localStorage.setItem(name, value) : store.dispatch(setDataInRedux({
+    name: name,
+    value: value
+  }));
 };
 export var removeData = function removeData(name) {
-  return isLocalStorageAvailable()
-    ? localStorage.removeItem(name)
-    : store.dispatch(
-        removeDataFromRedux({
-          name
-        })
-      );
+  return isLocalStorageAvailable() ? localStorage.removeItem(name) : store.dispatch(removeDataFromRedux({
+    name: name
+  }));
 };
 export var sendMessage = function sendMessage(msg) {
   if (window.opener) {

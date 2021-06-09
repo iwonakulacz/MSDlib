@@ -1,16 +1,7 @@
 import { connect } from 'react-redux';
-import {
-  setCurrentUser as _setCurrentUser,
-  setConsents as _setConsents,
-  setUserCapture as _setUserCapture,
-  updateCaptureOption as _updateCaptureOption
-} from 'redux/userProfile';
-import {
-  showInnerPopup as _showInnerPopup,
-  hideInnerPopup as _hideInnerPopup
-} from 'redux/innerPopupReducer';
+import { setCurrentUser as _setCurrentUser, setConsents as _setConsents, setUserCapture as _setUserCapture, updateCaptureOption as _updateCaptureOption } from 'redux/userProfile';
+import { showInnerPopup as _showInnerPopup, hideInnerPopup as _hideInnerPopup } from 'redux/innerPopupReducer';
 import UpdateProfile from './UpdateProfile.component';
-
 export var mapStateToProps = function mapStateToProps(state) {
   return {
     userProfile: state.userProfile,
@@ -41,8 +32,5 @@ export var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }
   };
 };
-export var MyAccountContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UpdateProfile);
+export var MyAccountContainer = connect(mapStateToProps, mapDispatchToProps)(UpdateProfile);
 export default MyAccountContainer;

@@ -1,11 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createAction, createReducer } from '@reduxjs/toolkit';
-
 export var SET_DATA = 'SET_DATA';
 export var setData = createAction(SET_DATA);
 export var REMOVE_DATA = 'REMOVE_DATA';
 export var removeData = createAction(REMOVE_DATA);
-const initialState = {
+var initialState = {
   CLEENG_OFFER_ID: '',
   CLEENG_PUBLISHER_ID: '',
   CLEENG_AUTH_TOKEN: '',
@@ -16,7 +15,7 @@ const initialState = {
   CLEENG_HOSTED: '',
   CLEENG_HEADER_OFF: ''
 };
-const appConfig = createReducer(initialState, {
+var appConfig = createReducer(initialState, {
   SET_DATA: function SET_DATA(state, action) {
     state[action.payload.name] = action.payload.value;
   },

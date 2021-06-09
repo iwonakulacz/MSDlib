@@ -20,28 +20,4 @@ import applyCoupon from './Customer/applyCoupon';
 import getCaptureStatus from './Customer/getCaptureStatus';
 import updateCaptureAnswers from './Customer/updateCaptureAnswers';
 import submitConsents from './Customer/submitConsents';
-
-export {
-  getPaymentMethods,
-  getPaymentDetails,
-  getCustomerSubscriptions,
-  getCustomer,
-  createOrder,
-  updateOrder,
-  submitPayment,
-  submitPaymentWithoutDetails,
-  getConsents,
-  getCaptureStatus,
-  updateCaptureAnswers,
-  getOfferDetails,
-  loginCustomer,
-  registerCustomer,
-  resetPassword,
-  listCustomerTransactions,
-  getCustomerConsents,
-  submitPayPalPayment,
-  getAvailableSwitches,
-  subscriptionSwitch,
-  applyCoupon,
-  submitConsents
-};
+export { getPaymentMethods, getPaymentDetails, getCustomerSubscriptions, getCustomer, createOrder, updateOrder, submitPayment, submitPaymentWithoutDetails, getConsents, getCaptureStatus, updateCaptureAnswers, getOfferDetails, loginCustomer, registerCustomer, resetPassword, listCustomerTransactions, getCustomerConsents, submitPayPalPayment, getAvailableSwitches, subscriptionSwitch, applyCoupon, submitConsents };

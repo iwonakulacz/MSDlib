@@ -1,13 +1,6 @@
-import {
-  SET_PAYMENT_METHOD,
-  SET_TRANSACTIONS_LIST,
-  SET_TRANSACTIONS_TO_SHOW,
-  SET_TRANSACTIONS_LIST_AS_FETCHED,
-  HIDE_SHOW_MORE_BUTTON
-} from 'redux/paymentInfo';
+import { SET_PAYMENT_METHOD, SET_TRANSACTIONS_LIST, SET_TRANSACTIONS_TO_SHOW, SET_TRANSACTIONS_LIST_AS_FETCHED, HIDE_SHOW_MORE_BUTTON } from 'redux/paymentInfo';
 import { mapStateToProps, mapDispatchToProps } from './PaymentInfo.container';
-
-const planDetailsMock = {
+var planDetailsMock = {
   id: 193925086,
   customerId: 280372348,
   token: '8315816736477319',
@@ -22,9 +15,9 @@ const planDetailsMock = {
   },
   paymentMethodId: null
 };
-describe('<PaymentInfo/>', function() {
-  it('should show previously added value', function() {
-    const initialState = {
+describe('<PaymentInfo/>', function () {
+  it('should show previously added value', function () {
+    var initialState = {
       paymentInfo: {
         paymentMethod: [planDetailsMock],
         transactionsList: [],
@@ -41,36 +34,36 @@ describe('<PaymentInfo/>', function() {
       isShowMoreButtonHidden: false
     });
   });
-  it('should dispatch SET_PAYMENT_METHOD action', function() {
-    const dispatch = jest.fn();
+  it('should dispatch SET_PAYMENT_METHOD action', function () {
+    var dispatch = jest.fn();
     mapDispatchToProps(dispatch).setPaymentMethod();
     expect(dispatch.mock.calls[0][0]).toEqual({
       type: SET_PAYMENT_METHOD
     });
   });
-  it('should dispatch SET_TRANSACTIONS_LIST action', function() {
-    const dispatch = jest.fn();
+  it('should dispatch SET_TRANSACTIONS_LIST action', function () {
+    var dispatch = jest.fn();
     mapDispatchToProps(dispatch).setTransactionsList();
     expect(dispatch.mock.calls[0][0]).toEqual({
       type: SET_TRANSACTIONS_LIST
     });
   });
-  it('should dispatch SET_TRANSACTIONS_TO_SHOW action', function() {
-    const dispatch = jest.fn();
+  it('should dispatch SET_TRANSACTIONS_TO_SHOW action', function () {
+    var dispatch = jest.fn();
     mapDispatchToProps(dispatch).setTransactionsToShow();
     expect(dispatch.mock.calls[0][0]).toEqual({
       type: SET_TRANSACTIONS_TO_SHOW
     });
   });
-  it('should dispatch SET_TRANSACTIONS_LIST_AS_FETCHED action', function() {
-    const dispatch = jest.fn();
+  it('should dispatch SET_TRANSACTIONS_LIST_AS_FETCHED action', function () {
+    var dispatch = jest.fn();
     mapDispatchToProps(dispatch).setTransactionsListAsFetched();
     expect(dispatch.mock.calls[0][0]).toEqual({
       type: SET_TRANSACTIONS_LIST_AS_FETCHED
     });
   });
-  it('should dispatch HIDE_SHOW_MORE_BUTTON action', function() {
-    const dispatch = jest.fn();
+  it('should dispatch HIDE_SHOW_MORE_BUTTON action', function () {
+    var dispatch = jest.fn();
     mapDispatchToProps(dispatch).hideShowMoreButton();
     expect(dispatch.mock.calls[0][0]).toEqual({
       type: HIDE_SHOW_MORE_BUTTON

@@ -1,16 +1,15 @@
 /* eslint-disable no-param-reassign */
 import { createAction, createReducer } from '@reduxjs/toolkit';
-
 export var SHOW_POPUP = 'SHOW_POPUP';
 export var showPopup = createAction(SHOW_POPUP);
 export var HIDE_POPUP = 'HIDE_POPUP';
 export var hidePopup = createAction(HIDE_POPUP);
-const initialState = {
+var initialState = {
   isPopupShown: false,
   popupType: '',
   consents: []
 };
-const popupReducer = createReducer(initialState, {
+var popupReducer = createReducer(initialState, {
   SHOW_POPUP: function SHOW_POPUP(state, action) {
     state.isPopupShown = true;
     state.popupType = action.payload.type;

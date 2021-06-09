@@ -3,8 +3,7 @@ import React from 'react';
 import { SET_CURRENT_USER, SET_CONSENTS } from 'redux/userProfile';
 import { SHOW_INNER_POPUP, HIDE_INNER_POPUP } from 'redux/innerPopupReducer';
 import { mapStateToProps, mapDispatchToProps } from './UpdateProfile.container';
-
-const userProfileMock = {
+var userProfileMock = {
   id: 338816933,
   email: 'user@example.com',
   firstName: '',
@@ -28,40 +27,38 @@ const userProfileMock = {
   externalId: '',
   externalData: null
 };
-jest.mock('containers/labeling', function() {
-  return function() {
-    return function(Component) {
-      return function(props) {
-        return /* #__PURE__ */ React.createElement(Component, {
+jest.mock('containers/labeling', function () {
+  return function () {
+    return function (Component) {
+      return function (props) {
+        return /*#__PURE__*/React.createElement(Component, Object.assign({
           t: function t(k) {
             return k;
-          },
-          ...props
-        });
+          }
+        }, props));
       };
     };
   };
 });
-jest.mock('react-i18next', function() {
+jest.mock('react-i18next', function () {
   return {
     withTranslation: function withTranslation() {
-      return function(Component) {
-        return function(props) {
-          return /* #__PURE__ */ React.createElement(Component, {
+      return function (Component) {
+        return function (props) {
+          return /*#__PURE__*/React.createElement(Component, Object.assign({
             t: function t(k) {
               return k;
-            },
-            ...props
-          });
+            }
+          }, props));
         };
       };
     }
   };
 });
-describe('<UpdateProfile/>', function() {
-  describe('@container', function() {
-    it('should show previously added value', function() {
-      const initialState = {
+describe('<UpdateProfile/>', function () {
+  describe('@container', function () {
+    it('should show previously added value', function () {
+      var initialState = {
         userProfile: userProfileMock,
         userConsents: [],
         consentsError: [],
@@ -71,33 +68,31 @@ describe('<UpdateProfile/>', function() {
           data: {}
         }
       };
-      expect(mapStateToProps(initialState).userProfile).toEqual(
-        userProfileMock
-      );
+      expect(mapStateToProps(initialState).userProfile).toEqual(userProfileMock);
     });
-    it('should dispatch SET_CURRENT_USER action', function() {
-      const dispatch = jest.fn();
+    it('should dispatch SET_CURRENT_USER action', function () {
+      var dispatch = jest.fn();
       mapDispatchToProps(dispatch).setCurrentUser();
       expect(dispatch.mock.calls[0][0]).toEqual({
         type: SET_CURRENT_USER
       });
     });
-    it('should dispatch SET_CONSENTS action', function() {
-      const dispatch = jest.fn();
+    it('should dispatch SET_CONSENTS action', function () {
+      var dispatch = jest.fn();
       mapDispatchToProps(dispatch).setConsents();
       expect(dispatch.mock.calls[0][0]).toEqual({
         type: SET_CONSENTS
       });
     });
-    it('should dispatch SHOW_INNER_POPUP action', function() {
-      const dispatch = jest.fn();
+    it('should dispatch SHOW_INNER_POPUP action', function () {
+      var dispatch = jest.fn();
       mapDispatchToProps(dispatch).showInnerPopup();
       expect(dispatch.mock.calls[0][0]).toEqual({
         type: SHOW_INNER_POPUP
       });
     });
-    it('should dispatch HIDE_INNER_POPUP action', function() {
-      const dispatch = jest.fn();
+    it('should dispatch HIDE_INNER_POPUP action', function () {
+      var dispatch = jest.fn();
       mapDispatchToProps(dispatch).hideInnerPopup();
       expect(dispatch.mock.calls[0][0]).toEqual({
         type: HIDE_INNER_POPUP
