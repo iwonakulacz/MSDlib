@@ -1,6 +1,6 @@
 {
   "name": "mediastoresdk-test",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "ikulacz",
   "engines": {
     "node": ">=14.15.0 <15.0"
@@ -18,7 +18,7 @@
     "@typescript-eslint/eslint-plugin": "1.13.0",
     "@typescript-eslint/parser": "1.13.0",
     "babel-eslint": "^10.1.0",
-    "babel-jest": "^24.8.0",
+    "babel-jest": "26.6.0",
     "babel-loader": "8.2.2",
     "babel-plugin-named-asset-import": "^0.3.7",
     "babel-preset-react-app": "^9.1.2",
@@ -131,8 +131,6 @@
     ]
   },
   "devDependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
     "@babel/cli": "^7.14.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
@@ -149,6 +147,8 @@
     "husky": "^3.1.0",
     "jest-styled-components": "^6.3.4",
     "lint-staged": "^9.5.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-recommended-scss": "^3.3.0",
