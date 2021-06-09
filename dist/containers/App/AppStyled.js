@@ -1,4 +1,4 @@
-import _taggedTemplateLiteral from '/Users/iwonakulacz/Documents/repos/media-store-sdk/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral';
+import _taggedTemplateLiteral from '/Users/iwonakulacz/Documents/repos/msd-package/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral';
 
 import styled, { css } from 'styled-components';
 import { media } from 'styles/BreakPoints';

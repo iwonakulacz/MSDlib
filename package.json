@@ -1,6 +1,6 @@
 {
   "name": "mediastoresdk-test",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "ikulacz",
   "engines": {
     "node": ">=14.15.0 <15.0"
@@ -91,7 +91,7 @@
     "build-storybook": "build-storybook",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "scan-translations": "node -e 'require(`./scripts/translationsBundle.js`).run(false)'",
-    "build:package": "rm -rf dist && NODE_ENV=production babel src/containers/App --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
+    "build:package": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
   },
   "browserslist": {
     "production": [
